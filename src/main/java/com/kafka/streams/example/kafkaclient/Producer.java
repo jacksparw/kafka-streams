@@ -19,7 +19,7 @@ public class Producer {
 
         KafkaProducer producer = new KafkaProducer(properties);
 
-        ProducerRecord<String, String> producerRecord = new ProducerRecord<>("word-count-input", "key1", "kafka topic");
+        ProducerRecord<String, String> producerRecord = new ProducerRecord<>("word-count-input", "key1", "My Kafka");
 
         producer.send(producerRecord);
         producer.close();
