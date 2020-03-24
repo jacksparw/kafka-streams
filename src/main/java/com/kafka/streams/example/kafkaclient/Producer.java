@@ -1,4 +1,4 @@
-package com.study.kafkaclient;
+package com.kafka.streams.example.kafkaclient;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;

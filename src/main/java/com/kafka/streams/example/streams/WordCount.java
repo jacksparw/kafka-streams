@@ -1,4 +1,4 @@
-package com.study.streams;
+package com.kafka.streams.example.streams;
 
 import lombok.extern.log4j.Log4j;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
