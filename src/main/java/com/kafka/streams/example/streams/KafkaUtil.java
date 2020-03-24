@@ -10,7 +10,6 @@ public class KafkaUtil {
 
     public static Properties kafkaProperties() {
         Properties config = new Properties();
-        config.put(StreamsConfig.APPLICATION_ID_CONFIG, "word-count-application");
         config.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "127.0.0.1:9092");
         config.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass());
         config.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass());
