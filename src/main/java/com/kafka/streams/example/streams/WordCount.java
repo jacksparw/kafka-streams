@@ -40,5 +40,7 @@ public class WordCount {
 
         KafkaStreams streams = new KafkaStreams(builder.build(), config);
         streams.start();
+
+        Runtime.getRuntime().addShutdownHook(new Thread(streams::close));
     }
 }
