@@ -1,6 +1,7 @@
 package com.kafka.streams.example.streams.favColor;
 
 import com.kafka.streams.example.streams.KafkaUtil;
+import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.common.utils.Bytes;
 import org.apache.kafka.streams.KafkaStreams;
 import org.apache.kafka.streams.KeyValue;
@@ -34,7 +35,9 @@ public class FavColorWithCount {
 
         fav_color_KTable
                 .groupBy((key, value) -> new KeyValue<>(value,value))
-                .count(Materialized.<String, Long, KeyValueStore< Bytes, byte[]>>as("CountByColors"));
+                .count(Materialized.<String, Long, KeyValueStore< Bytes, byte[]>>as("CountByColors")
+                        .withKeySerde(Serdes.String())
+                        .withValueSerde(Serdes.Long()));
 
         Properties config = KafkaUtil.kafkaProperties();
         config.put(StreamsConfig.APPLICATION_ID_CONFIG, "fav-color-user-application");
