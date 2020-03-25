@@ -1,7 +1,6 @@
 package com.kafka.streams.example.streams.favColor;
 
 import com.kafka.streams.example.streams.KafkaUtil;
-import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.common.utils.Bytes;
 import org.apache.kafka.streams.KafkaStreams;
 import org.apache.kafka.streams.KeyValue;
@@ -10,14 +9,13 @@ import org.apache.kafka.streams.StreamsConfig;
 import org.apache.kafka.streams.kstream.KStream;
 import org.apache.kafka.streams.kstream.KTable;
 import org.apache.kafka.streams.kstream.Materialized;
-import org.apache.kafka.streams.kstream.Produced;
 import org.apache.kafka.streams.state.KeyValueStore;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 
-public class FavColor {
+public class FavColorWithCount {
 
     public static final List<String> ALLOWED_COLORS = Arrays.asList("red", "blue", "green");
 

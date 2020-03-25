@@ -14,7 +14,6 @@ import org.apache.kafka.streams.kstream.Materialized;
 import org.apache.kafka.streams.kstream.Produced;
 import org.apache.kafka.streams.state.KeyValueStore;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Properties;
 import java.util.stream.Collectors;
@@ -32,9 +31,9 @@ public class WC_WithFlatMap {
                 inputStream.mapValues(value -> value.toLowerCase())
                         .flatMap((key, value) -> Arrays.asList(value.split(" "))
                                 .stream()
-                                .map(word -> new KeyValue<>(word, word))
-                                .collect(Collectors.toCollection(ArrayList::new)))
-                        .groupBy((key, value) -> key)
+                                .map(word -> KeyValue.pair(word, word))
+                                .collect(Collectors.toList()))
+                        .groupByKey()
                         .count(Materialized.<String, Long, KeyValueStore<Bytes, byte[]>>as("counts-store"));
 
         wordCount.toStream().to("word-count-output", Produced.with(Serdes.String(), Serdes.Long()));
